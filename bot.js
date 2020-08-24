@@ -32,7 +32,7 @@ client.on('message', message => {
       var output = ""
       
       //get quote
-      finnhubClient.quote(t, async (error, data, response) => {
+      finnhubClient.quote(t, (error, data, response) => {
         
         //check to make sure we have a valid response
         console.log(Object.keys(data).length > 0)
@@ -40,19 +40,19 @@ client.on('message', message => {
            info.push(data)
             
            //get recommendations
-           await finnhubClient.recommendationTrends(t, (e, d, r) => {
+           finnhubClient.recommendationTrends(t, (e, d, r) => {
                 //console.log(d)
                 info.push(d)
            });
             
            //get agrregate indicator
-           await finnhubClient.aggregateIndicator(t, "D", (e, d, r) => {
+           finnhubClient.aggregateIndicator(t, "D", (e, d, r) => {
                 //console.log(d)
                 info.push(d)
            });
            
            //get companies basic financials
-           await finnhubClient.companyBasicFinancials(t, "margin", (e, d, r) => {
+           finnhubClient.companyBasicFinancials(t, "margin", (e, d, r) => {
                 //console.log(d)
                 info.push(d)
            });
