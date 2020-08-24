@@ -16,7 +16,7 @@ client.on('ready', () => {
  
 
 client.on('message', message => {
-    
+    //news
     if (message.content === '$news') {
       finnhubClient.generalNews("general", {}, (error, data, response) => {
         console.log(data)
@@ -24,28 +24,42 @@ client.on('message', message => {
       })
     }
     
+    //grab info from ticker
     else if (message.content.includes('$')) {
       var t = message.content.substring(1, message.content.length)
       t = t.toUpperCase()
       var info = []
+      var output = ""
+      
+      //get quote
       finnhubClient.quote(t, (error, data, response) => {
-        //console.log(data)
-        //console.log(Object.keys(data))
+        
+        //check to make sure we have a valid response
         console.log(Object.keys(data).length > 0)
         if (Object.keys(data).length > 0) {
-            info.push(data)
-            console.log(data)
-            finnhubClient.recommendationTrends(t, (e, d, r) => {
-                console.log(d)
+           info.push(data)
+            
+           //get recommendations
+           finnhubClient.recommendationTrends(t, (e, d, r) => {
+                //console.log(d)
+                info.push(d)
            });
+            
+           //get agrregate indicator
            finnhubClient.aggregateIndicator(t, "D", (e, d, r) => {
-                console.log(d)
+                //console.log(d)
+                info.push(d)
            });
+           
+           //get companies basic financials
            finnhubClient.companyBasicFinancials(t, "margin", (e, d, r) => {
-                console.log(d)
+                //console.log(d)
+                info.push(d)
            });
-           message.reply(t);
+            
+           //pretty print everything
            console.log(info)
+           message.reply(t);
         }
        });
     }
