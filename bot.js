@@ -15,14 +15,14 @@ client.on('ready', () => {
 
  
 
-client.on('message', message => {
+client.on('message', message => async {
     //news
     if (message.content === '$news') {
       finnhubClient.generalNews("general", {}, (error, data, response) => {
         console.log(data)
         console.log(error)
       })
-    }
+    } //end if
     
     //grab info from ticker
     else if (message.content.includes('$')) {
@@ -32,7 +32,7 @@ client.on('message', message => {
       var output = ""
       
       //get quote
-      finnhubClient.quote(t, (error, data, response) => {
+      await finnhubClient.quote(t, (error, data, response) => async {
         
         //check to make sure we have a valid response
         console.log(Object.keys(data).length > 0)
@@ -40,31 +40,32 @@ client.on('message', message => {
            info.push(data)
             
            //get recommendations
-           finnhubClient.recommendationTrends(t, (e, d, r) => {
+           await finnhubClient.recommendationTrends(t, (e, d, r) => {
                 //console.log(d)
                 info.push(d)
            });
             
            //get agrregate indicator
-           finnhubClient.aggregateIndicator(t, "D", (e, d, r) => {
+           await finnhubClient.aggregateIndicator(t, "D", (e, d, r) => {
                 //console.log(d)
                 info.push(d)
            });
            
            //get companies basic financials
-           finnhubClient.companyBasicFinancials(t, "margin", (e, d, r) => {
+           await finnhubClient.companyBasicFinancials(t, "margin", (e, d, r) => {
                 //console.log(d)
                 info.push(d)
-                //pretty print everything
-                console.log(info)
-                message.reply(t);
            });
-            
            
         }
         
        });
-    }
+       
+       //pretty print everything
+                console.log(info)
+                message.reply(t);
+
+    } //end else if 
  
     
 
