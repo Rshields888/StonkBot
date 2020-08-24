@@ -16,17 +16,19 @@ client.on('ready', () => {
  
 
 client.on('message', message => {
-
-    if (message.content.includes('$')) {
+    
+    if (message.content === '$news') {
+      finnhubClient.generalNews("general", {}, (error, data, response)) => {
+        message.reply(data)
+      }
+    }
+    
+    else if (message.content.includes('$')) {
       var t = message.content.substring(1, message.content.length)
       message.reply(t);
     }
  
-    if (message.content === '$news') {
-      finnhubClient.generalNews("general", {}, (error, data, response) => {
-        message.reply(data)
-      }
-    }
+    
 
 });
 
