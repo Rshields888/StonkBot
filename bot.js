@@ -75,7 +75,7 @@ client.on('message', message => {
                
         }
         else {
-            message.reply('No stock found with ticker: ' + t + ' :('
+            message.reply('No stock found with ticker: ' + t + ' :(')
         }
         
        });
