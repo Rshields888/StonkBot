@@ -55,13 +55,14 @@ client.on('message', message => {
            finnhubClient.companyBasicFinancials(t, "margin", (e, d, r) => {
                 //console.log(d)
                 info.push(d)
+                //pretty print everything
+                console.log(info)
+                message.reply(t);
            });
             
            
         }
-        //pretty print everything
-           console.log(info)
-           message.reply(t);
+        
        });
     }
  
