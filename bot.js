@@ -63,8 +63,8 @@ client.on('message', message => {
                                 console.log(info)
                                 output = t + " Quote: \n" + 'Open: ' + String(info[0]['o']) + '\nHigh: ' + String(info[0]['h']) + '\nLow: ' + String(info[0]['l']) + '\nClose: ' + String(info[0]['c']) + '\nPrevious Close: ' + String(info[0]['pc'])
                                 output = output + '\n'
-                                output = output + '\nRecommendations as of ' + info[1][0]['period'] + '\nBuy: ' + String(info[1][0]['buy']) + '\nSell: ' + String(info[1][0]['sell']) + '\nHold: ' + String(info[1][0]['hold']) + '\n'
-                                output = output + 'Aggregate Indicators: ' + info[2]['technicalAnalysis']['signal'] + '\n'
+                                //output = output + '\nRecommendations as of ' + info[1][0]['period'] + '\nBuy: ' + String(info[1][0]['buy']) + '\nSell: ' + String(info[1][0]['sell']) + '\nHold: ' + String(info[1][0]['hold']) + '\n'
+                                output = output + '\nAggregate Indicators: ' + info[2]['technicalAnalysis']['signal'] + '\n'
                                 output = output + 'Trends: ' + String(info[2]['trend']['adx']) + ',  Trending = ' + String(info[2]['trend']['trending'])
                                 message.reply(output);
                             });
