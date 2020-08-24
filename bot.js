@@ -14,7 +14,7 @@ client.on('ready', () => {
 
 client.on('message', message => {
 
-    if ('$' in message.content) {
+    if (message.content.includes('$')) {
       var t = message.content.substring(1, message.content.length - 1)
       message.reply(t);
 
