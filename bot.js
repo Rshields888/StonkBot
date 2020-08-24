@@ -20,6 +20,7 @@ client.on('message', message => {
     if (message.content === '$news') {
       finnhubClient.generalNews("general", {}, (error, data, response) => {
         console.log(data)
+          console.log(error)
       })
     }
     
