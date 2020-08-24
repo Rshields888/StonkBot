@@ -18,9 +18,9 @@ client.on('ready', () => {
 client.on('message', message => {
     
     if (message.content === '$news') {
-      finnhubClient.generalNews("general", {}, (error, data, response)) => {
+      finnhubClient.generalNews("general", {}, (error, data, response) => {
         message.reply(data)
-      }
+      })
     }
     
     else if (message.content.includes('$')) {
