@@ -57,10 +57,11 @@ client.on('message', message => {
                 info.push(d)
            });
             
-           //pretty print everything
+           
+        }
+        //pretty print everything
            console.log(info)
            message.reply(t);
-        }
        });
     }
  
