@@ -34,6 +34,7 @@ client.on('message', message => {
         console.log(Object.keys(data).length > 0)
         if (Object.keys(data).length > 0) {
             info.push(data)
+            console.log(data)
         }
        });
       
@@ -41,10 +42,10 @@ client.on('message', message => {
            finnhubClient.recommendationTrends(t, (error, data, response) => {
                 console.log(data)
            });
-           finnhubClient.aggregateIndicator("AAPL", "D", (error, data, response) => {
+           finnhubClient.aggregateIndicator(t, "D", (error, data, response) => {
                 console.log(data)
            });
-           finnhubClient.companyBasicFinancials("AAPL", "margin", (error, data, response) => {
+           finnhubClient.companyBasicFinancials(t, "margin", (error, data, response) => {
                 console.log(data)
            });
            
