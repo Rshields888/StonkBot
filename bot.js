@@ -31,6 +31,7 @@ client.on('message', message => {
       finnhubClient.quote(t, (error, data, response) => {
         console.log(data)
           console.log(typeof(data))
+         console.log(data.keys)
       });
       
         
