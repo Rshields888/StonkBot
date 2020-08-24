@@ -63,7 +63,7 @@ client.on('message', message => {
                                 output = output + 'Recommendations as of ' + info[1][0]['period'] + ' Buy: ' + String(info[1][0]['buy']) + ' Sell: ' + String(info[1][0]['sell']) + ' Hold: ' + String(info[1][0]['hold']) + '\n'
                                 output = output + 'Aggregate Indicators: ' + info[2]['technicalAnalysis']['signal'] + '\n'
                                 output = output + 'Trends: ' + String(info[2]['trend']['adx']) + ',  Trending = ' + String(info[2]['trend']['trending'])
-                                message.reply(t);
+                                message.reply(output);
                             });
                         
                     }});
