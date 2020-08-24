@@ -34,6 +34,8 @@ client.on('message', message => {
       var info = []
       var output = ""
       
+      //doing it this way because of Javascripts finnicky ass synchronous behavior
+      
       //get quote
       finnhubClient.quote(t, (error, data, response) => {
         
