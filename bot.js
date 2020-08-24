@@ -15,8 +15,8 @@ client.on('ready', () => {
 client.on('message', message => {
 
     if (message.content === '$') {
-       
-       message.reply('pong');
+       var t = message.content.substring(1, message.content.length - 1)
+       message.reply(t);
 
        }
 
