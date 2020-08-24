@@ -15,7 +15,7 @@ client.on('ready', () => {
 
  
 
-client.on('message', message => async {
+client.on('message', message => {
     //news
     if (message.content === '$news') {
       finnhubClient.generalNews("general", {}, (error, data, response) => {
@@ -32,7 +32,7 @@ client.on('message', message => async {
       var output = ""
       
       //get quote
-      await finnhubClient.quote(t, (error, data, response) => async {
+      finnhubClient.quote(t, async (error, data, response) => {
         
         //check to make sure we have a valid response
         console.log(Object.keys(data).length > 0)
