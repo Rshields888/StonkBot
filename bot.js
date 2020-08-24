@@ -36,13 +36,13 @@ client.on('message', message => {
             info.push(data)
             console.log(data)
             finnhubClient.recommendationTrends(t, (e, d, r) => {
-                console.log(data)
+                console.log(d)
            });
            finnhubClient.aggregateIndicator(t, "D", (e, d, r) => {
-                console.log(data)
+                console.log(d)
            });
            finnhubClient.companyBasicFinancials(t, "margin", (e, d, r) => {
-                console.log(data)
+                console.log(d)
            });
            message.reply(t);
            console.log(info)
