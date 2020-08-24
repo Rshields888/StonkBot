@@ -35,25 +35,19 @@ client.on('message', message => {
         if (Object.keys(data).length > 0) {
             info.push(data)
             console.log(data)
+            finnhubClient.recommendationTrends(t, (e, d, r) => {
+                console.log(data)
+           });
+           finnhubClient.aggregateIndicator(t, "D", (e, d, r) => {
+                console.log(data)
+           });
+           finnhubClient.companyBasicFinancials(t, "margin", (e, d, r) => {
+                console.log(data)
+           });
+           message.reply(t);
+           console.log(info)
         }
        });
-      
-       if (info.length > 0) {
-           finnhubClient.recommendationTrends(t, (error, data, response) => {
-                console.log(data)
-           });
-           finnhubClient.aggregateIndicator(t, "D", (error, data, response) => {
-                console.log(data)
-           });
-           finnhubClient.companyBasicFinancials(t, "margin", (error, data, response) => {
-                console.log(data)
-           });
-           
-       }
-        
-        
-      message.reply(t);
-      console.log(info)
     }
  
     
