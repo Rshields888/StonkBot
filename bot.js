@@ -57,10 +57,9 @@ client.on('message', message => {
                                 //pretty print everything
                                 console.log(info)
                                 message.reply(t);
-                            }
-                        });
+                            });
                         
-                    });
+                    }});
                 }
            });
                
