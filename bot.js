@@ -30,8 +30,8 @@ client.on('message', message => {
       var info = ""
       finnhubClient.quote(t, (error, data, response) => {
         console.log(data)
-          console.log(typeof(data))
-         console.log(Object.keys(data))
+          console.log(Object.keys(data))
+         console.log(Object.keys(data).length > 0)
       });
       
         
