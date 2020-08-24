@@ -29,7 +29,8 @@ client.on('message', message => {
       t = t.toUpperCase()
       var info = ""
       finnhubClient.quote(t, (error, data, response) => {
-        console.log(data[0])
+        console.log(data)
+          console.log(typeof(data))
       });
       
         
