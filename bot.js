@@ -2,7 +2,10 @@ const Discord = require('discord.js');
 
 const client = new Discord.Client();
 
- 
+const finnhub = require('finnhub');
+const api_key = finnhub.ApiClient.instance.authentications['api_key'];
+api_key.apiKey = process.env.FINN_KEY
+const finnhubClient = new finnhub.DefaultApi()
 
 client.on('ready', () => {
 
@@ -15,9 +18,14 @@ client.on('ready', () => {
 client.on('message', message => {
 
     if (message.content.includes('$')) {
-      var t = message.content.substring(1, message.content.length - 1)
+      var t = message.content.substring(1, message.content.length)
       message.reply(t);
-
+    }
+ 
+    if (message.content === '$news') {
+      finnhubClient.generalNews("general", {}, (error, data, response) => {
+        message.reply(data)
+      }
     }
 
 });
