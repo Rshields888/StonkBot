@@ -26,6 +26,13 @@ client.on('message', message => {
     
     else if (message.content.includes('$')) {
       var t = message.content.substring(1, message.content.length)
+      var info = ""
+      finnhubClient.quote("AAPL", (error, data, response) => {
+        console.log(data)
+        console.log(error)
+      });
+      
+        
       message.reply(t);
     }
  
