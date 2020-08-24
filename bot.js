@@ -20,22 +20,39 @@ client.on('message', message => {
     if (message.content === '$news') {
       finnhubClient.generalNews("general", {}, (error, data, response) => {
         console.log(data)
-          console.log(error)
+        console.log(error)
       })
     }
     
     else if (message.content.includes('$')) {
       var t = message.content.substring(1, message.content.length)
       t = t.toUpperCase()
-      var info = ""
+      var info = []
       finnhubClient.quote(t, (error, data, response) => {
-        console.log(data)
-          console.log(Object.keys(data))
-         console.log(Object.keys(data).length > 0)
-      });
+        //console.log(data)
+        //console.log(Object.keys(data))
+        console.log(Object.keys(data).length > 0)
+        if (Object.keys(data).length > 0) {
+            info.push(data)
+        }
+       });
       
+       if (info.length > 0) {
+           finnhubClient.recommendationTrends(t, (error, data, response) => {
+                console.log(data)
+           });
+           finnhubClient.aggregateIndicator("AAPL", "D", (error, data, response) => {
+                console.log(data)
+           });
+           finnhubClient.companyBasicFinancials("AAPL", "margin", (error, data, response) => {
+                console.log(data)
+           });
+           
+       }
+        
         
       message.reply(t);
+      console.log(info)
     }
  
     
