@@ -14,11 +14,11 @@ client.on('ready', () => {
 
 client.on('message', message => {
 
-    if (message.content === '$') {
-       var t = message.content.substring(1, message.content.length - 1)
-       message.reply('pong');
+    if ('$' in message.content) {
+      var t = message.content.substring(1, message.content.length - 1)
+      message.reply(t);
 
-       }
+    }
 
 });
 
