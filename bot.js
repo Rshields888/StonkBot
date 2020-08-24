@@ -26,10 +26,12 @@ client.on('message', message => {
     
     else if (message.content.includes('$')) {
       var t = message.content.substring(1, message.content.length)
+      t = t.toUpperCase()
       var info = ""
       finnhubClient.quote(t, (error, data, response) => {
         console.log(data)
         console.log(!error)
+          console.log(response)
       });
       
         
