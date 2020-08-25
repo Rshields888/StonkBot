@@ -66,7 +66,8 @@ client.on('message', message => {
                                 //output = output + '\nRecommendations as of ' + info[1][0]['period'] + '\nBuy: ' + String(info[1][0]['buy']) + '\nSell: ' + String(info[1][0]['sell']) + '\nHold: ' + String(info[1][0]['hold']) + '\n'
                                 output = output + '\nAggregate Indicators: ' + info[2]['technicalAnalysis']['signal'] + '\n'
                                 output = output + 'Trends: ' + String(info[2]['trend']['adx']) + ',  Trending = ' + String(info[2]['trend']['trending']) + '\n'
-                                output = output + 'Chart: ' + 'https://www.tradingview.com/chart/?symbol=' + t
+                                output = output + 'Quick Chart: ' + 'https://stockcharts.com/c-sc/sc?s=' + t + '&p=D&b=5&g=0&i=0' + '\n'
+                                output = output + 'Full Chart: ' + 'https://www.tradingview.com/chart/?symbol=' + t
                                 message.reply(output);
                             });
                         
