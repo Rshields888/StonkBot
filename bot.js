@@ -29,7 +29,7 @@ client.on('message', message => {
     
     //grab info from ticker
     else if (message.content.includes('$$$')) {
-      var t = message.content.substring(1, message.content.length)
+      var t = message.content.substring(3, message.content.length)
       t = t.toUpperCase()
       var info = []
       var output = ""
